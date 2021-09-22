@@ -17,7 +17,7 @@ $grey-color-light: rgba(135, 135, 157, 0.25);
   box-sizing: border-box;
 }
 
-body {
+body, html {
   height: 100%;
 }
 
@@ -102,14 +102,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 48px;
+  @include desktopScreen {
+    padding-top: 80px;
+  }
   &__logo {
-    margin-bottom: 50px;
-    @media screen and (min-width: 420px) {
-      margin-bottom: 0;
-    }
+    margin-bottom: 54px;
     @include tabletScreen {
-      margin-bottom: 50px;
+      margin-bottom: 64px;
+    }
+    @include desktopScreen {
+      margin-bottom: 0;
     }
   }
   &__image-wrapper {
@@ -119,7 +122,6 @@ body {
     background-size: contain;
     width: 110%;
     min-height: 175px;
-    margin-bottom: 50px;
 
     @media screen and (min-width: 420px) {
       min-height: 330px;
@@ -127,7 +129,6 @@ body {
     }
     @include tabletScreen {
       min-height: 303px;
-      margin-bottom: 50px;
     }
     @media screen and (min-width: 850px) {
       min-height: 450px;
@@ -159,12 +160,16 @@ body {
     align-items: center;
   }
   &__hero {
-    padding-bottom: 50px;
+    padding: 48px 0;
+    @include tabletScreen {
+      padding: 72px 0 80px 0;
+    }
     @include desktopScreen {
       display: flex;
       flex-direction: row;
       width: 100%;
       justify-content: space-around;
+      padding: 61px 0 110px 0;
     }
   }
   &__hero-text {
@@ -182,17 +187,17 @@ body {
     @include tabletScreen {
       font-size: 48px;
       line-height: 48px;
-      max-width: 330px;
+      max-width: 370px;
       min-height: 100px;
     }
     @media screen and (min-width: 850px) {
       @include h1;
-      max-width: 380px;
-      min-height: 200px;
+      max-width: 470px;
+      min-height: unset;
       margin-bottom: 24px;
     }
     @include desktopScreen {
-      min-height: 200px;
+      margin-bottom: 34px;
     }
   }
   &__content {
@@ -200,9 +205,6 @@ body {
     margin-bottom: 32px;
     @include tabletScreen {
       max-width: 450px;
-    }
-    @media screen and (min-width: 850px) {
-      font-size: 20px;
     }
   }
   &__button-wrapper {
@@ -228,6 +230,9 @@ body {
       white-space: nowrap;
       width: -webkit-fill-available;
     }
+    @include desktopScreen {
+      width: unset;
+    }
   }
   &__button-version-primary {
     color: $primary-light-color;
@@ -243,6 +248,9 @@ body {
       white-space: nowrap;
       width: -webkit-fill-available;
     }
+    @include desktopScreen {
+      width: unset;
+    }
   }
   &__separator {
     @include body;
@@ -255,8 +263,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-top: 134px;
-    margin-bottom: 65px;
+    margin-top: 82px;
     overflow: unset;
 
     &::before {
@@ -274,15 +281,15 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 24px;
-    margin-bottom: 65px;
+    padding: 64px 24px;
 
-    @media screen and (max-width: 378px) {
-      padding: 0 24px;
-    }
     @include tabletScreen {
       display: flex;
       justify-content: center;
-      padding: 0 40px;
+      padding: 64px 40px 48px;
+    }
+    @include desktopScreen {
+      padding: 64px 60px 80px;
     }
   }
   &__meetings-image {
@@ -297,13 +304,7 @@ body {
   }
   &__meetings-overline {
     @include overline;
-    margin-bottom: 24px;
-    @media screen and (min-width: 850px) {
-      font-size: 18px;
-    }
-    @include desktopScreen {
-      font-size: 16px;
-    }
+    margin-bottom: 16px;
   }
   &__meetings-title {
     @include h3;
@@ -311,13 +312,7 @@ body {
     @include tabletScreen {
       @include h2;
       max-width: 445px;
-      margin-bottom: 45px;
-    }
-    @media screen and (min-width: 850px) {
-      font-size: 44px;
-    }
-    @include desktopScreen {
-      font-size: 40px;
+      margin-bottom: 32px;
     }
   }
   &__meetings-content {
@@ -326,12 +321,9 @@ body {
       font-size: 16px;
       max-width: 573px;
     }
-    @media screen and (min-width: 850px) {
-      font-size: 18px;
-    }
     @include desktopScreen {
-      max-width: 540px;
-      font-size: 16px;
+      max-width: 520px;
+      font-size: 18px;
     }
   }
 }
@@ -343,6 +335,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 64px;
+  @include tabletScreen {
+    margin-top: 80px;
+  }
+  @include desktopScreen {
+    margin-top: 69px;
+  }
   &__wrapper {
     background-image: url(assets/mobile/image-footer.jpg);
     background-repeat: no-repeat;
@@ -355,16 +354,18 @@ body {
     flex-direction: column;
     align-items: center;
     @include tabletScreen {
-      background-image: url(assets/desktop/image-footer.jpg);
+      background-image: url(assets/tablet/image-footer.jpg);
       background-position: unset;
       width: 100%;
     }
     @include desktopScreen {
+      background-image: url(assets/desktop/image-footer.jpg);
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-evenly;
       padding: 0 40px;
       min-height: 300px;
       background-position: center;
+      min-height: 308px;
     }
     &::before {
       content: "";
@@ -384,38 +385,43 @@ body {
     margin-bottom: 24px;
     @include tabletScreen {
       @include h2;
-      margin-bottom: 45px;
+      margin-bottom: 32px;
       max-width: 457px;
       color: $white-color;
-      margin-top: 15px;
     }
     @media screen and (min-width: 850px) {
-      font-size: 44px;
       min-height: 100px;
       margin-bottom: 30px;
     }
     @include desktopScreen {
       text-align: left;
       max-width: 350px;
-      font-size: 40px;
     }
   }
   &__content {
     @include body;
+    font-size: 18px;
     color: $white-color;
     padding: 0 30px;
     margin-bottom: 32px;
     @include tabletScreen {
-      max-width: 350px;
-      font-size: 18px;
+      margin-bottom: 40px;
+    }
+    @include desktopScreen {
+      text-align: left;
+      max-width: 410px;
     }
   }
   &__button-secondary {
     @include button;
+    margin-bottom: 0;
     background-color: $secondary-color;
     white-space: nowrap;
     &:hover {
       background-color: $secondary-color-hover;
+    }
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 0;
     }
   }
   &__button-version-secondary {
@@ -425,9 +431,10 @@ body {
 
 .-footer {
   position: absolute;
-  top: -45px;
+  top: 88px;
   background-color: $white-color;
   z-index: 1;
+  margin: 0;
 }
 
 @include desktopScreen {
