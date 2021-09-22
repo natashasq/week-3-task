@@ -1,0 +1,523 @@
+$primary-color: #4d96a9;
+$secondary-color: #855fb1;
+$dark-color: #28283d;
+$grey-color: #87879d;
+$primary-light-color: #8fe3f9;
+$secondary-light-color: #d9b8ff;
+$white-color: #fafafa;
+$primary-color-hover: #71c0d4;
+$secondary-color-hover: #b18bdd;
+$grey-color-light: rgba(135, 135, 157, 0.25);
+
+* {
+  font-family: "Red Hat Display", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+@mixin tabletScreen {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin desktopScreen {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin h1 {
+  font-size: 64px;
+  line-height: 64px;
+  color: $dark-color;
+  font-weight: 900;
+  margin: 0;
+  overflow: hidden;
+}
+
+@mixin h2 {
+  font-size: 40px;
+  line-height: 44px;
+  color: $dark-color;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+@mixin h3 {
+  font-size: 32px;
+  line-height: 36px;
+  color: $dark-color;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+@mixin overline {
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 4px;
+  color: $primary-color;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+@mixin body {
+  font-size: 16px;
+  line-height: 26px;
+  color: $grey-color;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+@mixin button {
+  padding: 16px 40px;
+  @include body;
+  font-weight: 900;
+  border-radius: 30px;
+  border: none;
+  color: $white-color;
+  cursor: pointer;
+  width: fit-content;
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 16px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  &__logo {
+    margin-bottom: 50px;
+    @media screen and (min-width: 420px) {
+      margin-bottom: 0;
+    }
+    @include tabletScreen {
+      margin-bottom: 50px;
+    }
+  }
+  &__image-wrapper {
+    background-image: url(assets/tablet/image-hero.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 110%;
+    min-height: 175px;
+    margin-bottom: 50px;
+
+    @media screen and (min-width: 420px) {
+      min-height: 330px;
+      margin-bottom: 0;
+    }
+    @include tabletScreen {
+      min-height: 303px;
+      margin-bottom: 50px;
+    }
+    @media screen and (min-width: 850px) {
+      min-height: 450px;
+    }
+    @include desktopScreen {
+      display: none;
+    }
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  max-width: 330px;
+  margin: 0 auto 65px auto;
+  @include tabletScreen {
+    max-width: 100%;
+    &__meetings-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__hero,
+  &__meetings,
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__hero {
+    padding-bottom: 50px;
+    @include desktopScreen {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+  &__hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include desktopScreen {
+      width: 100%;
+    }
+  }
+  &__title {
+    @include h2;
+    padding: 0 30px;
+    margin-bottom: 24px;
+    @include tabletScreen {
+      font-size: 48px;
+      line-height: 48px;
+      max-width: 330px;
+      min-height: 100px;
+    }
+    @media screen and (min-width: 850px) {
+      @include h1;
+      max-width: 380px;
+      min-height: 200px;
+      margin-bottom: 24px;
+    }
+    @include desktopScreen {
+      min-height: 200px;
+    }
+  }
+  &__content {
+    @include body;
+    margin-bottom: 32px;
+    @include tabletScreen {
+      max-width: 450px;
+    }
+    @media screen and (min-width: 850px) {
+      font-size: 20px;
+    }
+  }
+  &__button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tabletScreen {
+      flex-direction: row;
+      justify-content: center;
+    }
+    @include desktopScreen {
+      width: 100%;
+    }
+  }
+  &__button-primary {
+    @include button;
+    background-color: $primary-color;
+    &:hover {
+      background-color: $primary-color-hover;
+    }
+    @include tabletScreen {
+      margin-right: 10px;
+      white-space: nowrap;
+      width: -webkit-fill-available;
+    }
+  }
+  &__button-version-primary {
+    color: $primary-light-color;
+  }
+  &__button-secondary {
+    @include button;
+    background-color: $secondary-color;
+    &:hover {
+      background-color: $secondary-color-hover;
+    }
+    @include tabletScreen {
+      margin-left: 10px;
+      white-space: nowrap;
+      width: -webkit-fill-available;
+    }
+  }
+  &__separator {
+    @include body;
+    font-weight: 900;
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    border: 1px solid $grey-color-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 134px;
+    margin-bottom: 65px;
+    overflow: unset;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 85px;
+      background-color: $grey-color-light;
+      bottom: 57px;
+      display: block;
+    }
+  }
+  &__meetings-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 65px;
+
+    @media screen and (max-width: 378px) {
+      padding: 0 24px;
+    }
+    @include tabletScreen {
+      display: flex;
+      justify-content: center;
+      padding: 0 40px;
+    }
+  }
+  &__meetings-image {
+    max-width: 151px;
+    max-height: 143px;
+    border-radius: 8px;
+    width: 100%;
+    @include tabletScreen {
+      max-width: 255px;
+      max-height: 242px;
+    }
+  }
+  &__meetings-overline {
+    @include overline;
+    margin-bottom: 24px;
+    @media screen and (min-width: 850px) {
+      font-size: 18px;
+    }
+    @include desktopScreen {
+      font-size: 16px;
+    }
+  }
+  &__meetings-title {
+    @include h3;
+    margin-bottom: 32px;
+    @include tabletScreen {
+      @include h2;
+      max-width: 445px;
+      margin-bottom: 45px;
+    }
+    @media screen and (min-width: 850px) {
+      font-size: 44px;
+    }
+    @include desktopScreen {
+      font-size: 40px;
+    }
+  }
+  &__meetings-content {
+    @include body;
+    @include tabletScreen {
+      font-size: 16px;
+      max-width: 573px;
+    }
+    @media screen and (min-width: 850px) {
+      font-size: 18px;
+    }
+    @include desktopScreen {
+      max-width: 540px;
+      font-size: 16px;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+  padding-top: 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__wrapper {
+    background-image: url(assets/mobile/image-footer.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 92px 24px 72px;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tabletScreen {
+      background-image: url(assets/desktop/image-footer.jpg);
+      background-position: unset;
+      width: 100%;
+    }
+    @include desktopScreen {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 0 40px;
+      min-height: 300px;
+      background-position: center;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(77, 150, 169, 0.8);
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+  &__title {
+    @include h3;
+    color: $white-color;
+    z-index: 5;
+    margin-bottom: 24px;
+    @include tabletScreen {
+      @include h2;
+      margin-bottom: 45px;
+      max-width: 457px;
+      color: $white-color;
+      margin-top: 15px;
+    }
+    @media screen and (min-width: 850px) {
+      font-size: 44px;
+      min-height: 100px;
+      margin-bottom: 30px;
+    }
+    @include desktopScreen {
+      text-align: left;
+      max-width: 350px;
+      font-size: 40px;
+    }
+  }
+  &__content {
+    @include body;
+    color: $white-color;
+    padding: 0 30px;
+    margin-bottom: 32px;
+    @include tabletScreen {
+      max-width: 350px;
+      font-size: 18px;
+    }
+  }
+  &__button-secondary {
+    @include button;
+    background-color: $secondary-color;
+    white-space: nowrap;
+    &:hover {
+      background-color: $secondary-color-hover;
+    }
+  }
+  &__button-version-secondary {
+    color: $secondary-light-color;
+  }
+}
+
+.-footer {
+  position: absolute;
+  top: -45px;
+  background-color: $white-color;
+  z-index: 1;
+}
+
+@include desktopScreen {
+  .page {
+    &__hero-img-left,
+    &__hero-img-right {
+      height: 358px;
+      width: 420px;
+      position: relative;
+      width: 100%;
+    }
+    &__hero-img {
+      height: 110px;
+      width: 110px;
+      border-radius: 50%;
+      background-size: contain;
+      position: absolute;
+    }
+    .img-1 {
+      background: url(assets/desktop/hero_images/image_1.jpeg);
+      background-size: contain;
+      top: 55px;
+      left: -20px;
+    }
+    .img-2 {
+      background: url(assets/desktop/hero_images/image_2.jpg);
+      background-size: contain;
+      top: 195px;
+      left: -20px;
+    }
+    .img-3 {
+      background: url(assets/desktop/hero_images/image_3.jpg);
+      background-size: contain;
+      top: 0;
+      left: 130px;
+    }
+    .img-4 {
+      background: url(assets/desktop/hero_images/image_4.jpg);
+      background-size: contain;
+      top: 140px;
+      left: 130px;
+    }
+    .img-5 {
+      background: url(assets/desktop/hero_images/image_5.jpeg);
+      background-size: contain;
+      top: 55px;
+      left: 280px;
+    }
+    .img-6 {
+      background: url(assets/desktop/hero_images/image_6.jpg);
+      background-size: contain;
+      top: 195px;
+      left: 280px;
+    }
+
+    .img-7 {
+      background: url(assets/desktop/hero_images/image_7.jpg);
+      background-size: contain;
+      top: 55px;
+      right: -20px;
+    }
+    .img-8 {
+      background: url(assets/desktop/hero_images/image_8.jpeg);
+      background-size: contain;
+      top: 195px;
+      right: -20px;
+    }
+    .img-9 {
+      background: url(assets/desktop/hero_images/image_9.jpg);
+      background-size: contain;
+      bottom: 140px;
+      right: 130px;
+    }
+    .img-10 {
+      background: url(assets/desktop/hero_images/image_10.jpg);
+      background-size: contain;
+      bottom: 0;
+      right: 130px;
+    }
+    .img-11 {
+      background: url(assets/desktop/hero_images/image_11.jpg);
+      background-size: contain;
+      top: 55px;
+      right: 280px;
+    }
+    .img-12 {
+      background: url(assets/desktop/hero_images/image_12.jpeg);
+      background-size: contain;
+      top: 195px;
+      right: 280px;
+    }
+  }
+}
